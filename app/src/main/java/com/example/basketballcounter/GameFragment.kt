@@ -8,10 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import java.util.*
@@ -42,6 +39,10 @@ class GameFragment: Fragment() {
     private lateinit var display: Button
     private lateinit var winnerBtn: Button
     private lateinit var winnerTxt: TextView
+    private lateinit var photoButtonA: ImageButton
+    private lateinit var photoButtonB: ImageButton
+    private lateinit var photoViewA: ImageView
+    private lateinit var photoViewB: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?){
@@ -71,6 +72,10 @@ class GameFragment: Fragment() {
         resetBtn = view.findViewById(R.id.reset) as Button
         display = view.findViewById(R.id.displayBtn) as Button
         winnerBtn = view.findViewById(R.id.winner) as Button
+        photoButtonA = view.findViewById(R.id.imageButtonA)
+        photoButtonB = view.findViewById(R.id.imageButtonB)
+        photoViewA = view.findViewById(R.id.teamAIcon)
+        photoViewB = view.findViewById(R.id.teamBIcon)
 
         if(!activity!!.isFinishing && (scoreViewModel.getScoreA() > 0 || scoreViewModel.getScoreB() > 0)) {
             Log.i(TAG, "Persisting score across screen rotation")

@@ -9,4 +9,7 @@ data class Game(val id: UUID = UUID.randomUUID(),
                 var scoreA: Int = 0,
                 var scoreB: Int = 0,
                 var date: Date = Date()
-)
+){
+    val photoFileName
+        get() = "IMG_$id.jpg"
+}

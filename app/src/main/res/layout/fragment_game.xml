@@ -9,17 +9,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="362dp"
-        android:layout_height="304dp"
+        android:layout_height="375dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="182dp"
+        android:layout_marginTop="21dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="245dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/winnerDisp">
 
         <View
+            android:id="@+id/view"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="181dp"
@@ -39,8 +39,7 @@
             app:layout_constraintBottom_toTopOf="@+id/scoreA"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
@@ -63,32 +62,28 @@
             android:layout_height="45dp"
             android:hint="@string/teamB_hint"
             android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/scoreB"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/teamA"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/teamA" />
 
         <TextView
             android:id="@+id/scoreB"
             android:layout_width="180dp"
-            android:layout_height="90dp"
-            android:layout_marginBottom="169dp"
+            android:layout_height="70dp"
             android:text="0"
             android:textAlignment="center"
             android:textColor="#070707"
             android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/Bpoints3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/scoreA"
-            app:layout_constraintTop_toBottomOf="@+id/teamB" />
+            app:layout_constraintStart_toEndOf="@+id/scoreA" />
 
         <Button
             android:id="@+id/Apoints3"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
             android:layout_marginEnd="197dp"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/three"
@@ -96,68 +91,59 @@
             app:layout_constraintBottom_toTopOf="@+id/Apoints2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scoreA" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/Apoints2"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
             android:layout_marginEnd="198dp"
-            android:layout_marginBottom="50dp"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/two"
             android:textColor="#070707"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/Afree"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scoreA" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/Afree"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="110dp"
             android:layout_marginEnd="196dp"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/free_throw"
             android:textColor="#070707"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scoreA" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/scoreA"
             android:layout_width="180dp"
-            android:layout_height="90dp"
-            android:layout_marginBottom="169dp"
+            android:layout_height="70dp"
             android:text="0"
             android:textAlignment="center"
             android:textColor="#070707"
             android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/Apoints3"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teamA" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/Bpoints3"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="196dp"
-            android:layout_marginTop="88dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/three"
             android:textColor="#070707"
+            app:layout_constraintBottom_toTopOf="@+id/Bpoints2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teamB" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/Bpoints2"
@@ -170,23 +156,62 @@
             android:textColor="#070707"
             app:layout_constraintBottom_toTopOf="@+id/Bfree"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Bpoints3" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/Bfree"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="196dp"
-            android:layout_marginTop="199dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/free_throw"
             android:textColor="#070707"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButtonA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
+
+        <ImageButton
+            android:id="@+id/imageButtonB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
+
+        <ImageView
+            android:id="@+id/teamAIcon"
+            android:layout_width="82dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/darker_gray"
+            android:cropToPadding="true"
+            android:scaleType="centerInside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teamB" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/teamBIcon"
+            android:layout_width="82dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/darker_gray"
+            android:cropToPadding="true"
+            android:scaleType="centerInside"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -194,11 +219,11 @@
         android:id="@+id/winner"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginTop="1dp"
         android:backgroundTint="#4CAF50"
         android:text="@string/winner"
         android:textColor="#0B0A0A"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
@@ -207,14 +232,13 @@
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="56dp"
-        android:layout_marginBottom="52dp"
         android:textAlignment="center"
         android:textColor="#4CAF50"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -222,9 +246,8 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="362dp"
         android:layout_height="129dp"
-        app:layout_constraintBottom_toTopOf="@+id/winner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
