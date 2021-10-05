@@ -208,6 +208,11 @@ class GameFragment: Fragment() {
         teamBname.addTextChangedListener(teamBWatcher)
     }
 
+    override fun onStop() {
+        super.onStop()
+        gameDetailViewModel.saveGame(game)
+    }
+
     private fun updateUI(){
         teamAname.setText(game.teamAname)
         teamBname.setText(game.teamBname)

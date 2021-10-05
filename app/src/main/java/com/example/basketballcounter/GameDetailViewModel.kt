@@ -18,4 +18,8 @@ class GameDetailViewModel(): ViewModel() {
     fun loadGame(gameId: UUID) {
         gameIdLiveData.value = gameId
     }
+
+    fun saveGame(game: Game) {
+        gameRepository.updateCrime(game)
+    }
 }

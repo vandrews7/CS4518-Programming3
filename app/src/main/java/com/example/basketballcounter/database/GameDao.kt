@@ -2,7 +2,9 @@ package com.example.basketballcounter.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.basketballcounter.Game
 import java.util.*
 
@@ -20,4 +22,10 @@ interface GameDao {
 
     @Query("SELECT * FROM game WHERE scoreB > scoreA")
     fun getBWins(): LiveData<List<Game>>
+
+    @Update
+    fun updateGame(game: Game)
+
+    @Insert
+    fun addGame(game: Game)
 }

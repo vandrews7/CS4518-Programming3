@@ -7,6 +7,7 @@ import androidx.room.Room
 import com.example.basketballcounter.database.GameDatabase
 import java.lang.IllegalStateException
 import java.util.*
+import java.util.concurrent.Executors
 
 private const val DATABASE_NAME = "game-database"
 
@@ -19,14 +20,27 @@ class GameRepository private constructor(context: Context){
     ).build()
 
     private val gameDao = database.gameDao()
+    private val executor = Executors.newSingleThreadExecutor()
 
     fun getGames(): LiveData<List<Game>> = gameDao.getGames()
 
     fun getGame(id: UUID): LiveData<Game?> = gameDao.getGame(id)
 
     fun getAWins(): LiveData<List<Game>> = gameDao.getAWins()
-//
+
     fun getBWins(): LiveData<List<Game>> = gameDao.getBWins()
+
+    fun updateCrime(game: Game){
+        executor.execute{
+            gameDao.updateGame(game)
+        }
+    }
+
+    fun addGame(game: Game){
+        executor.execute{
+            gameDao.addGame(game)
+        }
+    }
 
     private val filesDir = context.applicationContext.filesDir
 
