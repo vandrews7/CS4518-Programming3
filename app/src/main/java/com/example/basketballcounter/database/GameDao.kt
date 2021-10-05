@@ -12,7 +12,7 @@ interface GameDao {
     fun getGames(): List<Game>
 
     @Query("SELECT * FROM game WHERE id=(:id)")
-    fun getGame(id: UUID) Game?
+    fun getGame(id: UUID): Game?
 
     @Query("SELECT * FROM game WHERE scoreA > scoreB")
     fun getAWins(): List<Game>
