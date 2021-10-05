@@ -9,14 +9,14 @@ import java.util.*
 
 class GameDetailViewModel(): ViewModel() {
     private val gameRepository = GameRepository.get()
-    private val gameIdLiveData = MutableLiveData<String>()
+    private val gameIdLiveData = MutableLiveData<UUID>()
 
     var gameLiveData: LiveData<Game?> =
         Transformations.switchMap(gameIdLiveData) { gameId ->
             gameRepository.getGame(gameId)
         }
 
-    fun loadGame(gameId: String) {
+    fun loadGame(gameId: UUID) {
         gameIdLiveData.value = gameId
     }
 

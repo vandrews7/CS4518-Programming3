@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.example.basketballcounter.Game
 
 @Database(entities = [Game::class], version = 1)
-//@TypeConverters(GameTypeConverters::class)
+@TypeConverters(GameTypeConverters::class)
 abstract class GameDatabase : RoomDatabase() {
 
     abstract fun gameDao(): GameDao

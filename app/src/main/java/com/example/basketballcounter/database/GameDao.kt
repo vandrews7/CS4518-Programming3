@@ -15,7 +15,7 @@ interface GameDao {
     fun getGames(): LiveData<List<Game>>
 
     @Query("SELECT * FROM table_game WHERE id=(:id)")
-    fun getGame(id: String): LiveData<Game?>
+    fun getGame(id: UUID): LiveData<Game?>
 
     @Query("SELECT * FROM table_game WHERE teamAScore > teamBScore")
     fun getAWins(): LiveData<List<Game>>
