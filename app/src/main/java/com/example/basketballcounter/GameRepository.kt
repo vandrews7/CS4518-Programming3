@@ -2,27 +2,27 @@ package com.example.basketballcounter
 
 import android.content.Context
 import java.io.File
-//import androidx.room.Room
-//import com.example.basketballcounter.database.GameDatabase
+import androidx.room.Room
+import com.example.basketballcounter.database.GameDatabase
 import java.lang.IllegalStateException
 
 private const val DATABASE_NAME = "game-database"
 
 class GameRepository private constructor(context: Context){
 
-//    private val database : GameDatabase = Room.databaseBuilder(
-//        context.applicationContext,
-//        GameDatabase::class.java,
-//        DATABASE_NAME
-//    ).build()
+    private val database : GameDatabase = Room.databaseBuilder(
+        context.applicationContext,
+        GameDatabase::class.java,
+        DATABASE_NAME
+    ).build()
 
-//    private val gameDao = database.gameDao()
+    private val gameDao = database.gameDao()
 
-//    fun getGames(): List<Game> = gameDao.getGames()
+    fun getGames(): List<Game> = gameDao.getGames()
 
-//    fun getAWins(): List<Game> = gameDao.getAWins()
+    fun getAWins(): List<Game> = gameDao.getAWins()
 //
-//    fun getBWins(): List<Game> = gameDao.getBWins()
+    fun getBWins(): List<Game> = gameDao.getBWins()
 
     private val filesDir = context.applicationContext.filesDir
 

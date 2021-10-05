@@ -61,8 +61,7 @@ class ScoreViewModel : ViewModel(){
     }
 
     fun getPhotoFile(game: Game): File {
-        GameRepository.initialize(Context)
-        return GameRepository.getPhotoFile(game)
+        return GameRepository.get().getPhotoFile(game)
     }
 
 }

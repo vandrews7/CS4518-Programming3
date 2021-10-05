@@ -10,9 +10,9 @@ interface GameDao {
     @Query("SELECT * FROM game")
     fun getGames(): List<Game>
 
-//    @Query("SELECT * FROM game WHERE scoreA > scoreB")
-//    fun getAWins(): List<Game>
-//
-//    @Query("SELECT * FROM game WHERE scoreB > scoreA")
-//    fun getBWins(): List<Game>
+    @Query("SELECT * FROM game WHERE scoreA > scoreB")
+    fun getAWins(): List<Game>
+
+    @Query("SELECT * FROM game WHERE scoreB > scoreA")
+    fun getBWins(): List<Game>
 }
