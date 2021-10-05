@@ -5,6 +5,7 @@ import java.io.File
 import androidx.room.Room
 import com.example.basketballcounter.database.GameDatabase
 import java.lang.IllegalStateException
+import java.util.*
 
 private const val DATABASE_NAME = "game-database"
 
@@ -19,6 +20,8 @@ class GameRepository private constructor(context: Context){
     private val gameDao = database.gameDao()
 
     fun getGames(): List<Game> = gameDao.getGames()
+
+    fun getGame(id: UUID): Game? = gameDao.getGame(id)
 
     fun getAWins(): List<Game> = gameDao.getAWins()
 //
