@@ -20,7 +20,7 @@ private const val TAG = "GameListFragment"
 class GameListFragment : Fragment() {
 
     interface Callbacks{
-        fun onGameSelected(gameId: UUID)
+        fun onGameSelected(gameId: String)
     }
 
     private var callbacks: Callbacks? = null
@@ -91,17 +91,17 @@ class GameListFragment : Fragment() {
 
         fun bind(game: Game) {
             this.game = game
-            gameNum.text = this.game.index
-            teamNames.text = getString(R.string.item_list_format, this.game.teamAname, this.game.teamBname)
+            gameNum.text = this.game.id.toString()
+            teamNames.text = getString(R.string.item_list_format, this.game.teamAName, this.game.teamBName)
             teamScores.text =
-                getString(R.string.item_list_format, this.game.scoreA.toString(), this.game.scoreB.toString())
+                getString(R.string.item_list_format, this.game.teamAScore.toString(), this.game.teamBScore.toString())
             gameDate.text = this.game.date.toString()
-            teamAicon.visibility = if (this.game.scoreA > this.game.scoreB) {
+            teamAicon.visibility = if (this.game.teamAScore > this.game.teamBScore) {
                 View.VISIBLE
             } else {
                 View.GONE
             }
-            teamBicon.visibility = if (this.game.scoreB > this.game.scoreA) {
+            teamBicon.visibility = if (this.game.teamAScore > this.game.teamBScore) {
                 View.VISIBLE
             } else {
                 View.GONE

@@ -24,10 +24,10 @@ class GameFragment: Fragment() {
     }
 
     private lateinit var game: Game
-    private lateinit var teamAname: EditText
-    private lateinit var teamBname: EditText
-    private lateinit var teamAscore: TextView
-    private lateinit var teamBscore: TextView
+    private lateinit var teamAName: EditText
+    private lateinit var teamBName: EditText
+    private lateinit var teamAScore: TextView
+    private lateinit var teamBScore: TextView
     private lateinit var Abtn3: Button
     private lateinit var Abtn2: Button
     private lateinit var AbtnFree: Button
@@ -48,7 +48,7 @@ class GameFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         game = Game()
-        val gameId: UUID = arguments?.getSerializable(ARG_GAME_ID) as UUID
+        val gameId: String = arguments?.getSerializable(ARG_GAME_ID) as String
         Log.d(TAG, "arg bundle game ID: $gameId")
     }
 
@@ -59,10 +59,10 @@ class GameFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_game, container, false)
 
-        teamAname = view.findViewById(R.id.teamA) as EditText
-        teamBname = view.findViewById(R.id.teamB) as EditText
-        teamAscore = view.findViewById(R.id.scoreA) as TextView
-        teamBscore = view.findViewById(R.id.scoreB) as TextView
+        teamAName = view.findViewById(R.id.teamA) as EditText
+        teamBName = view.findViewById(R.id.teamB) as EditText
+        teamAScore = view.findViewById(R.id.scoreA) as TextView
+        teamBScore = view.findViewById(R.id.scoreB) as TextView
         winnerTxt = view.findViewById(R.id.winnerDisp) as TextView
         Abtn3 = view.findViewById(R.id.Apoints3) as Button
         Abtn2 = view.findViewById(R.id.Apoints2) as Button
@@ -81,8 +81,8 @@ class GameFragment: Fragment() {
 
         if(!activity!!.isFinishing && (scoreViewModel.getScoreA() > 0 || scoreViewModel.getScoreB() > 0)) {
             Log.i(TAG, "Persisting score across screen rotation")
-            teamAscore.text = scoreViewModel.getScoreA().toString()
-            teamBscore.text = scoreViewModel.getScoreB().toString()
+            teamAScore.text = scoreViewModel.getScoreA().toString()
+            teamBScore.text = scoreViewModel.getScoreB().toString()
             if(scoreViewModel.getWinPressed() > 0) {
                 print(scoreViewModel.getWinPressed())
                 winnerTxt.text = scoreViewModel.getScore()
@@ -90,27 +90,27 @@ class GameFragment: Fragment() {
         }
 
         Abtn3.setOnClickListener {
-            teamAscore.text = scoreViewModel.addScoreA(3)
+            teamAScore.text = scoreViewModel.addScoreA(3)
         }
 
         Abtn2.setOnClickListener {
-            teamAscore.text = scoreViewModel.addScoreA(2)
+            teamAScore.text = scoreViewModel.addScoreA(2)
         }
 
         AbtnFree.setOnClickListener {
-            teamAscore.text = scoreViewModel.addScoreA(1)
+            teamAScore.text = scoreViewModel.addScoreA(1)
         }
 
         Bbtn3.setOnClickListener {
-            teamBscore.text = scoreViewModel.addScoreB(3)
+            teamBScore.text = scoreViewModel.addScoreB(3)
         }
 
         Bbtn2.setOnClickListener {
-            teamBscore.text = scoreViewModel.addScoreB(2)
+            teamBScore.text = scoreViewModel.addScoreB(2)
         }
 
         BbtnFree.setOnClickListener {
-            teamBscore.text = scoreViewModel.addScoreB(1)
+            teamBScore.text = scoreViewModel.addScoreB(1)
         }
 
         winnerBtn.setOnClickListener {
@@ -118,8 +118,8 @@ class GameFragment: Fragment() {
         }
 
         resetBtn.setOnClickListener {
-            teamAscore.text = scoreViewModel.resetScoreA()
-            teamBscore.text = scoreViewModel.resetScoreB()
+            teamAScore.text = scoreViewModel.resetScoreA()
+            teamBScore.text = scoreViewModel.resetScoreB()
             scoreViewModel.resetWinPressed()
             winnerTxt.text = ""
         }
@@ -159,13 +159,13 @@ class GameFragment: Fragment() {
                                        count: Int,
                                        after: Int
             ) {
-                game.teamAname = sequence.toString()
+                game.teamAName = sequence.toString()
             }
 
             override fun afterTextChanged(sequence: Editable?) {
             }
         }
-        teamAname.addTextChangedListener(teamAWatcher)
+        teamAName.addTextChangedListener(teamAWatcher)
 
         val teamBWatcher = object: TextWatcher{
             override fun beforeTextChanged(sequence: CharSequence?,
@@ -180,17 +180,17 @@ class GameFragment: Fragment() {
                                        count: Int,
                                        after: Int
             ) {
-                game.teamBname = sequence.toString()
+                game.teamBName = sequence.toString()
             }
 
             override fun afterTextChanged(sequence: Editable?) {
             }
         }
-        teamBname.addTextChangedListener(teamBWatcher)
+        teamBName.addTextChangedListener(teamBWatcher)
     }
 
     companion object{
-        fun newInstance(gameId: UUID): GameFragment{
+        fun newInstance(gameId: String): GameFragment{
             val args = Bundle().apply {
                 putSerializable(ARG_GAME_ID, gameId)
             }

@@ -13,11 +13,11 @@ interface GameDao {
     fun getGames(): LiveData<List<Game>>
 
     @Query("SELECT * FROM game WHERE id=(:id)")
-    fun getGame(id: UUID): LiveData<Game?>
+    fun getGame(id: String): LiveData<Game?>
 
-    @Query("SELECT * FROM game WHERE scoreA > scoreB")
+    @Query("SELECT * FROM game WHERE teamAScore > teamBScore")
     fun getAWins(): LiveData<List<Game>>
 
-    @Query("SELECT * FROM game WHERE scoreB > scoreA")
+    @Query("SELECT * FROM game WHERE teamBScore > teamAScore")
     fun getBWins(): LiveData<List<Game>>
 }
