@@ -1,6 +1,7 @@
 package com.example.basketballcounter
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import java.io.File
 import androidx.room.Room
 import com.example.basketballcounter.database.GameDatabase
@@ -19,13 +20,13 @@ class GameRepository private constructor(context: Context){
 
     private val gameDao = database.gameDao()
 
-    fun getGames(): List<Game> = gameDao.getGames()
+    fun getGames(): LiveData<List<Game>> = gameDao.getGames()
 
-    fun getGame(id: UUID): Game? = gameDao.getGame(id)
+    fun getGame(id: UUID): LiveData<Game?> = gameDao.getGame(id)
 
-    fun getAWins(): List<Game> = gameDao.getAWins()
+    fun getAWins(): LiveData<List<Game>> = gameDao.getAWins()
 //
-    fun getBWins(): List<Game> = gameDao.getBWins()
+    fun getBWins(): LiveData<List<Game>> = gameDao.getBWins()
 
     private val filesDir = context.applicationContext.filesDir
 

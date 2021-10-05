@@ -26,7 +26,7 @@ class GameListFragment : Fragment() {
     private var callbacks: Callbacks? = null
 
     private lateinit var gameRecyclerView: RecyclerView
-    private var adapter: GameAdapter? = null
+    private var adapter: GameAdapter? = GameAdapter(emptyList())
 
     private val gameListViewModel: GameListViewModel by lazy {
         ViewModelProviders.of(this).get(GameListViewModel::class.java)
@@ -38,11 +38,6 @@ class GameListFragment : Fragment() {
         callbacks = context as Callbacks?
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.i(TAG, "Total Games: ${gameListViewModel.games.size}")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,11 +46,23 @@ class GameListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_game_list, container, false)
 
         gameRecyclerView = view.findViewById(R.id.game_recycler_view) as RecyclerView
-        gameRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        updateUI()
+        gameRecyclerView.layoutManager = LinearLayoutManager(context)
+        gameRecyclerView.adapter = adapter
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        gameListViewModel.gameListLiveData.observe(
+            viewLifecycleOwner,
+            androidx.lifecycle.Observer { games->  //in the textbook this is Observer{} but when I put it in here it automatically changed it - didn't like the other one
+                games?.let {
+                    Log.i(TAG, "Got games") //should have ${games.size} but it didn't like .size
+                    updateUI(games)
+                }
+            })
     }
 
     override fun onDetach() {
@@ -63,8 +70,7 @@ class GameListFragment : Fragment() {
         callbacks = null
     }
 
-    private fun updateUI() {
-        val games = gameListViewModel.games
+    private fun updateUI(games: List<Game>) {
         adapter = GameAdapter(games)
         gameRecyclerView.adapter = adapter
     }

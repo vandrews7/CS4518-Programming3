@@ -72,10 +72,10 @@ class GameFragment: Fragment() {
         resetBtn = view.findViewById(R.id.reset) as Button
         display = view.findViewById(R.id.displayBtn) as Button
         winnerBtn = view.findViewById(R.id.winner) as Button
-        photoButtonA = view.findViewById(R.id.imageButtonA)
-        photoButtonB = view.findViewById(R.id.imageButtonB)
-        photoViewA = view.findViewById(R.id.teamAIcon)
-        photoViewB = view.findViewById(R.id.teamBIcon)
+        photoButtonA = view.findViewById(R.id.imageButtonA) as ImageButton
+        photoButtonB = view.findViewById(R.id.imageButtonB) as ImageButton
+        photoViewA = view.findViewById(R.id.teamAIcon) as ImageView
+        photoViewB = view.findViewById(R.id.teamBIcon) as ImageView
 
         if(!activity!!.isFinishing && (scoreViewModel.getScoreA() > 0 || scoreViewModel.getScoreB() > 0)) {
             Log.i(TAG, "Persisting score across screen rotation")

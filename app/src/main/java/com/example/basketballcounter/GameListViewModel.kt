@@ -20,6 +20,6 @@ class GameListViewModel : ViewModel() {
 //    }
 
     private val gameRepository = GameRepository.get()
-    val games = gameRepository.getGames()
+    val gameListLiveData = gameRepository.getGames()
 
 }
