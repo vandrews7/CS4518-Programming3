@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity
+@Entity(tableName = "table_game")
 data class Game(@PrimaryKey val id: String = "",
                 var teamAName: String = "",
                 var teamBName: String = "",
