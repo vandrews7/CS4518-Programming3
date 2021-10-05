@@ -1,6 +1,7 @@
 package com.example.basketballcounter
 
 import android.content.Context
+import java.io.File
 //import androidx.room.Room
 //import com.example.basketballcounter.database.GameDatabase
 import java.lang.IllegalStateException
@@ -22,6 +23,10 @@ class GameRepository private constructor(context: Context){
 //    fun getAWins(): List<Game> = gameDao.getAWins()
 //
 //    fun getBWins(): List<Game> = gameDao.getBWins()
+
+    private val filesDir = context.applicationContext.filesDir
+
+    fun getPhotoFile(game: Game): File = File(filesDir, game.photoFileName)
 
     companion object {
         private var INSTANCE: GameRepository? = null

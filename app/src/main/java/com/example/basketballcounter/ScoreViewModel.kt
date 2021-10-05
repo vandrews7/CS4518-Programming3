@@ -3,6 +3,7 @@ package com.example.basketballcounter
 import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.ViewModel
+import java.io.File
 
 private const val TAG = "ScoreViewModel"
 
@@ -57,6 +58,11 @@ class ScoreViewModel : ViewModel(){
     fun addScoreB(value: Int): String{
         scoreB += value
         return scoreB.toString()
+    }
+
+    fun getPhotoFile(game: Game): File {
+        GameRepository.initialize(Context)
+        return GameRepository.getPhotoFile(game)
     }
 
 }
