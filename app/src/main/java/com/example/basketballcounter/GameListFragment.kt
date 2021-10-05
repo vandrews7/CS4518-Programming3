@@ -20,7 +20,7 @@ private const val TAG = "GameListFragment"
 class GameListFragment : Fragment() {
 
     interface Callbacks{
-        fun onGameSelected(id: UUID)
+        fun onGameSelected(gameId: UUID)
     }
 
     private var callbacks: Callbacks? = null

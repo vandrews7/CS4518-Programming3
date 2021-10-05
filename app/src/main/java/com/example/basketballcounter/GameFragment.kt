@@ -48,6 +48,8 @@ class GameFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         game = Game()
+        val gameId: UUID = arguments?.getSerializable(ARG_GAME_ID) as UUID
+        Log.d(TAG, "arg bundle game ID: $gameId")
     }
 
     override fun onCreateView(
@@ -188,9 +190,9 @@ class GameFragment: Fragment() {
     }
 
     companion object{
-        fun newInstance(id: UUID): GameFragment{
-            val args = Bundle().apply{
-                putSerializable(ARG_GAME_ID, id)
+        fun newInstance(gameId: UUID): GameFragment{
+            val args = Bundle().apply {
+                putSerializable(ARG_GAME_ID, gameId)
             }
             return GameFragment().apply{
                 arguments = args

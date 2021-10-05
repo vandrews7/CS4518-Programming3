@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity(), GameListFragment.Callbacks  {
         }
     }
 
-    override fun onGameSelected(id: UUID) {
+    override fun onGameSelected(gameID: UUID) {
         //   Log.d(TAG, "MainActivity.onGameSelected: $id")
-        val fragment = GameFragment.newInstance(id)
+        val fragment = GameFragment.newInstance(gameID)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
