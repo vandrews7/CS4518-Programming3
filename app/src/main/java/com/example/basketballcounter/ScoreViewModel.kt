@@ -59,9 +59,4 @@ class ScoreViewModel : ViewModel(){
         scoreB += value
         return scoreB.toString()
     }
-
-    fun getPhotoFile(game: Game): File {
-        return GameRepository.get().getPhotoFile(game)
-    }
-
 }

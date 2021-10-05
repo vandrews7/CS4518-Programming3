@@ -21,6 +21,7 @@ class GameRepository private constructor(context: Context){
 
     private val gameDao = database.gameDao()
     private val executor = Executors.newSingleThreadExecutor()
+    private val filesDir = context.applicationContext.filesDir
 
     fun getGames(): LiveData<List<Game>> = gameDao.getGames()
 
@@ -41,8 +42,6 @@ class GameRepository private constructor(context: Context){
             gameDao.addGame(game)
         }
     }
-
-    private val filesDir = context.applicationContext.filesDir
 
     fun getPhotoFile(game: Game): File = File(filesDir, game.photoFileName)
 

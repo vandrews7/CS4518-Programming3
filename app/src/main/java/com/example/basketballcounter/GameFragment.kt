@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
+import java.io.File
 import java.util.*
 
 private const val TAG = "GameFragment"
@@ -25,6 +26,7 @@ class GameFragment: Fragment() {
     }
 
     private lateinit var game: Game
+    private lateinit var photoFile: File
     private lateinit var teamAname: EditText
     private lateinit var teamBname: EditText
     private lateinit var teamAscore: TextView
@@ -156,6 +158,7 @@ class GameFragment: Fragment() {
             Observer { game ->
                 game?.let {
                     this.game = game
+                    photoFile = gameDetailViewModel.getPhotoFile(game)
                     updateUI()
                 }
             }

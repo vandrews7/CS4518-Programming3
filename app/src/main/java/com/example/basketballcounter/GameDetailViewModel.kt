@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import java.io.File
 import java.util.*
 
 class GameDetailViewModel(): ViewModel() {
@@ -21,5 +22,9 @@ class GameDetailViewModel(): ViewModel() {
 
     fun saveGame(game: Game) {
         gameRepository.updateCrime(game)
+    }
+
+    fun getPhotoFile(game: Game): File {
+        return gameRepository.getPhotoFile(game)
     }
 }
