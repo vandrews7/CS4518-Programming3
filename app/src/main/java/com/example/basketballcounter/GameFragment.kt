@@ -62,8 +62,8 @@ class GameFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         game = Game()
-        val gameId: UUID = arguments?.getSerializable(ARG_GAME_ID) as UUID
-        //Log.d(TAG, "arg bundle game ID: $gameId")
+        val gameId: String = arguments?.getSerializable(ARG_GAME_ID) as String
+        Log.d(TAG, "arg bundle game ID: $gameId")
         gameDetailViewModel.loadGame(gameId)
     }
 
@@ -291,7 +291,7 @@ class GameFragment: Fragment() {
     }
 
     companion object{
-        fun newInstance(gameId: UUID): GameFragment{
+        fun newInstance(gameId: String): GameFragment{
             val args = Bundle().apply {
                 putSerializable(ARG_GAME_ID, gameId)
             }

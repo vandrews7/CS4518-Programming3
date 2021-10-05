@@ -25,7 +25,7 @@ class GameRepository private constructor(context: Context){
 
     fun getGames(): LiveData<List<Game>> = gameDao.getGames()
 
-    fun getGame(id: UUID): LiveData<Game?> = gameDao.getGame(id)
+    fun getGame(id: String): LiveData<Game?> = gameDao.getGame(id)
 
     fun getAWins(): LiveData<List<Game>> = gameDao.getAWins()
 
