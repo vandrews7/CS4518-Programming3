@@ -1,8 +1,11 @@
 package com.example.basketballcounter
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
-data class Game(val id: UUID = UUID.randomUUID(),
+@Entity
+data class Game(@PrimaryKey val id: UUID = UUID.randomUUID(),
                 var index: String = "",
                 var teamAname: String = "",
                 var teamBname: String = "",
