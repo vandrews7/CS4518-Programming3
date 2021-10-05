@@ -17,11 +17,11 @@ class GameTypeConverters {
     }
 
     @TypeConverter
-    fun fromUUID(uuid: String?): UUID? {
+    fun toUUID(uuid: String?): UUID? {
         return UUID.fromString(uuid)
     }
     @TypeConverter
-    fun toUUID(uuid: UUID?): String? {
+    fun fromUUID(uuid: UUID?): String? {
         return uuid?.toString()
     }
 
