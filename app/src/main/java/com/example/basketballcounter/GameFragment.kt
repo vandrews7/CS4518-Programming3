@@ -247,7 +247,7 @@ class GameFragment: Fragment() {
                                        count: Int,
                                        after: Int
             ) {
-                game.teamAname = sequence.toString()
+                game.teamAName = sequence.toString()
             }
 
             override fun afterTextChanged(sequence: Editable?) {
@@ -268,7 +268,7 @@ class GameFragment: Fragment() {
                                        count: Int,
                                        after: Int
             ) {
-                game.teamBname = sequence.toString()
+                game.teamBName = sequence.toString()
             }
 
             override fun afterTextChanged(sequence: Editable?) {
@@ -283,10 +283,10 @@ class GameFragment: Fragment() {
     }
 
     private fun updateUI(){
-        teamAname.setText(game.teamAname)
-        teamBname.setText(game.teamBname)
-        teamAscore.setText(game.scoreA)
-        teamBscore.setText(game.scoreB)
+        teamAname.setText(game.teamAName)
+        teamBname.setText(game.teamBName)
+        teamAscore.setText(game.teamAScore)
+        teamBscore.setText(game.teamBScore)
 
     }
 
