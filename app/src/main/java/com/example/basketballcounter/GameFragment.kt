@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
 import java.util.*
 
 private const val TAG = "GameFragment"
@@ -44,12 +45,17 @@ class GameFragment: Fragment() {
     private lateinit var photoViewA: ImageView
     private lateinit var photoViewB: ImageView
 
+    private val gameDetailViewModel: GameDetailViewModel by lazy {
+        ViewModelProviders.of(this).get(GameDetailViewModel::class.java)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         game = Game()
         val gameId: UUID = arguments?.getSerializable(ARG_GAME_ID) as UUID
-        Log.d(TAG, "arg bundle game ID: $gameId")
+        //Log.d(TAG, "arg bundle game ID: $gameId")
+        gameDetailViewModel.loadGame(gameId)
     }
 
     override fun onCreateView(
@@ -143,6 +149,19 @@ class GameFragment: Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        gameDetailViewModel.gameLiveData.observe(
+            viewLifecycleOwner,
+            Observer { game ->
+                game?.let {
+                    this.game = game
+                    updateUI()
+                }
+            }
+        )
+    }
+
     override fun onStart() {
         super.onStart()
 
@@ -187,6 +206,14 @@ class GameFragment: Fragment() {
             }
         }
         teamBname.addTextChangedListener(teamBWatcher)
+    }
+
+    private fun updateUI(){
+        teamAname.setText(game.teamAname)
+        teamBname.setText(game.teamBname)
+        teamAscore.setText(game.scoreA)
+        teamBscore.setText(game.scoreB)
+
     }
 
     companion object{

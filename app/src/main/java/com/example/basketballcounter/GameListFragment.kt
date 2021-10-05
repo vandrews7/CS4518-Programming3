@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.Observer
 import java.util.*
 
 private const val TAG = "GameListFragment"
@@ -57,7 +58,7 @@ class GameListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         gameListViewModel.gameListLiveData.observe(
             viewLifecycleOwner,
-            androidx.lifecycle.Observer { games->  //in the textbook this is Observer{} but when I put it in here it automatically changed it - didn't like the other one
+            Observer { games->
                 games?.let {
                     Log.i(TAG, "Got games") //should have ${games.size} but it didn't like .size
                     updateUI(games)
