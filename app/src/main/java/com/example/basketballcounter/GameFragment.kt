@@ -285,8 +285,8 @@ class GameFragment: Fragment() {
     private fun updateUI(){
         teamAname.setText(game.teamAName)
         teamBname.setText(game.teamBName)
-        teamAscore.setText(game.teamAScore)
-        teamBscore.setText(game.teamBScore)
+        teamAscore.text = game.teamAScore.toString()
+        teamBscore.text = game.teamBScore.toString()
 
     }
 
