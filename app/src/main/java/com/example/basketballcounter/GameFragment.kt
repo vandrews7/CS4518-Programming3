@@ -184,9 +184,6 @@ class GameFragment: Fragment() {
             val resolvedActivity: ResolveInfo? =
                 packageManager.resolveActivity(captureImage,
                 PackageManager.MATCH_DEFAULT_ONLY)
-            if (resolvedActivity == null){
-                isEnabled = false
-            }
 
             setOnClickListener{
                 captureImage.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
@@ -212,9 +209,6 @@ class GameFragment: Fragment() {
             val resolvedActivity: ResolveInfo? =
                 packageManager.resolveActivity(captureImage,
                     PackageManager.MATCH_DEFAULT_ONLY)
-            if (resolvedActivity == null){
-                isEnabled = false
-            }
 
             setOnClickListener{
                 captureImage.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
@@ -282,12 +276,39 @@ class GameFragment: Fragment() {
         gameDetailViewModel.saveGame(game)
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        requireActivity().revokeUriPermission(photoUri,
+        Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+    }
+
     private fun updateUI(){
         teamAname.setText(game.teamAName)
         teamBname.setText(game.teamBName)
         teamAscore.text = game.teamAScore.toString()
         teamBscore.text = game.teamBScore.toString()
 
+        updatePhotoViewA()
+        updatePhotoViewB()
+
+    }
+
+    private fun updatePhotoViewA(){
+        if (photoFile.exists()){
+            val bitmap = getScaledBitmap(photoFile.path, requireActivity())
+            photoViewA.setImageBitmap(bitmap)
+        } else {
+            photoViewA.setImageDrawable(null)
+        }
+    }
+
+    private fun updatePhotoViewB(){
+        if (photoFile.exists()){
+            val bitmap = getScaledBitmap(photoFile.path, requireActivity())
+            photoViewB.setImageBitmap(bitmap)
+        } else {
+            photoViewB.setImageDrawable(null)
+        }
     }
 
     companion object{
@@ -326,6 +347,13 @@ class GameFragment: Fragment() {
                 Toast.LENGTH_SHORT
             )
                 .show()
+        }
+
+        if(requestCode == REQUEST_PHOTO) {
+            requireActivity().revokeUriPermission(photoUri,
+                Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+            updatePhotoViewA()
+            updatePhotoViewA()
         }
     }
 
