@@ -15,7 +15,7 @@ class UrlFetchr {
 
     init {
         val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://www.flickr.com/")
+            .baseUrl("https://api.openweathermap.org/")
             .addConverterFactory(ScalarsConverterFactory.create())
             .build()
 

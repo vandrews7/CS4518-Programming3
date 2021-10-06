@@ -54,6 +54,7 @@ class GameFragment: Fragment() {
     private lateinit var display: Button
     private lateinit var winnerBtn: Button
     private lateinit var winnerTxt: TextView
+    private lateinit var weatherTxt: TextView
     private lateinit var photoButtonA: ImageButton
     private lateinit var photoButtonB: ImageButton
     private lateinit var photoViewA: ImageView
@@ -90,6 +91,7 @@ class GameFragment: Fragment() {
         teamAscore = view.findViewById(R.id.scoreA) as TextView
         teamBscore = view.findViewById(R.id.scoreB) as TextView
         winnerTxt = view.findViewById(R.id.winnerDisp) as TextView
+        weatherTxt = view.findViewById(R.id.weatherTextView) as TextView
         Abtn3 = view.findViewById(R.id.Apoints3) as Button
         Abtn2 = view.findViewById(R.id.Apoints2) as Button
         AbtnFree = view.findViewById(R.id.Afree) as Button
@@ -104,6 +106,13 @@ class GameFragment: Fragment() {
         photoButtonB = view.findViewById(R.id.imageButtonB) as ImageButton
         photoViewA = view.findViewById(R.id.teamAIcon) as ImageView
         photoViewB = view.findViewById(R.id.teamBIcon) as ImageView
+
+        val urlLiveData: LiveData<String> = UrlFetchr().fetchContents()
+        urlLiveData.observe(
+            this,
+            Observer { responseString ->
+                weatherTxt.text = responseString
+            })
 
         if(!activity!!.isFinishing && (scoreViewModel.getScoreA() > 0 || scoreViewModel.getScoreB() > 0)) {
             Log.i(TAG, "Persisting score across screen rotation")
