@@ -15,8 +15,13 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
+import com.example.basketballcounter.api.UrlFetchr
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 import java.util.*
 
@@ -58,13 +63,19 @@ class GameFragment: Fragment() {
         ViewModelProviders.of(this).get(GameDetailViewModel::class.java)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         game = Game()
         val gameId: UUID = arguments?.getSerializable(ARG_GAME_ID) as UUID
         Log.d(TAG, "arg bundle game ID: $gameId")
         gameDetailViewModel.loadGame(gameId)
+
+        val urlLiveData: LiveData<String> = UrlFetchr().fetchContents()
+        urlLiveData.observe(
+            this,
+            Observer { responseString ->
+                Log.d(TAG, "Response received: $responseString")
+            })
     }
 
     override fun onCreateView(
